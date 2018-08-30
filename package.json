@@ -1,0 +1,60 @@
+{
+  "name": "lyo",
+  "description": "Node.js to browser. The easy way",
+  "version": "0.2.0",
+  "author": "Boris K",
+  "bin": {
+    "lyo": "bin/cli.js"
+  },
+  "bugs": "https://github.com/bokub/lyo/issues",
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "browserify": "^16.2.2",
+    "camelcase": "^5.0.0",
+    "chalk": "^2.4.1",
+    "detect-indent": "^5.0.0",
+    "edit-json-file": "^1.1.0",
+    "get-stream": "^4.0.0",
+    "meow": "^5.0.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^3.0.0",
+    "uglify-js": "^3.4.8"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "flatten": "^1.0.2",
+    "temp-write": "^3.4.0",
+    "uniq": "^1.0.1",
+    "xo": "^0.22.0"
+  },
+  "homepage": "https://github.com/bokub/lyo",
+  "keywords": [
+    "babel",
+    "browser",
+    "browserify",
+    "cli",
+    "compiler",
+    "minifier",
+    "minify",
+    "node",
+    "npm",
+    "publish",
+    "terminal",
+    "tool",
+    "uglify"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "bokub/lyo",
+  "scripts": {
+    "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example -u",
+    "test": "xo && ava"
+  },
+  "xo": {
+    "rules": {
+      "guard-for-in": 0,
+      "no-prototype-builtins": 0
+    }
+  }
+}
