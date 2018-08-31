@@ -2,6 +2,11 @@
 
 > Node.js to browser. The easy way
 
+[![Npm version](https://badgen.net/npm/v/lyo)](https://npmjs.com/package/lyo)
+[![Build status](https://badgen.net/travis/bokub/lyo)](https://travis-ci.org/bokub/lyo)
+[![Build status](https://badgen.net/codecov/c/github/bokub/lyo)](https://codecov.io/gh/bokub/lyo)
+[![XO code style](https://badgen.net/badge/code%20style/XO/5ed9c7)](https://github.com/xojs/xo)
+
 Lyo is the easiest way to publish Node.js modules as browser-compatible libraries.
 
 No decision-making, no configuration needed, it just works!
@@ -105,15 +110,30 @@ Run `npm publish`, Lyo will compile your package, and the output will be pushed 
 Congratulations, you're done! 💪
 
 
+## FAQ
+
+#### What if I need unsupported features?
+
+If you need unsupported features (sourcemaps, code splitting...), just don't use Lyo. Lyo is nothing more than an
+all-in-one package, with automatic configuration.
+
+Feel free to use gulp, grunt, or any other tool that could meet your needs
+
+#### Why developing Lyo when there are thousands of better tools?
+
+Lyo's philosophy is highly inspired from [XO](https://github.com/xojs/xo), a linter that works immediately, without any
+configuration. XO is just an ESLint wrapper, but it saves you the hassle of choosing ESLint rules, adding them to a
+new `.eslintrc` file, installing plugins...
+
+I use XO for almost all my projects, but I could not find any tool as simple as XO for Node.js > browser compilation, so
+I created Lyo for that purpose
+ 
+#### What does Lyo mean?
+
+Lyo is short for [lyophilization](https://en.wiktionary.org/wiki/lyophilization), a process that transforms food
+into a dry and compact form
+
+
 ## License
 
 MIT © [Boris K](https://github.com/bokub)
-
-
-## About
-
-- Lyo's philosophy is highly inspired from [xo](https://github.com/xojs/xo), a linter that works immediately, without any
-configuration
- 
-- Lyo's name comes from [lyophilization](https://en.wiktionary.org/wiki/lyophilization), a process that transforms food
-into a compact shape.
