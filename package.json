@@ -23,7 +23,9 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "codecov": "^3.0.4",
     "flatten": "^1.0.2",
+    "nyc": "^13.0.1",
     "temp-write": "^3.4.0",
     "uniq": "^1.0.1",
     "xo": "^0.22.0"
@@ -48,8 +50,9 @@
   "main": "index.js",
   "repository": "bokub/lyo",
   "scripts": {
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example -u",
-    "test": "xo && ava"
+    "test": "xo && nyc ava -v"
   },
   "xo": {
     "rules": {
