@@ -13,6 +13,7 @@ const pkg = require(path.join(process.cwd(), 'package.json'));
 function lyo(flags) {
 	const opts = parseOptions(flags, pkg);
 	display.options(opts);
+
 	task.runBrowserify([opts.input], opts)
 		.then(code => task.runBabel(code, opts))
 		.then(code => task.runUglify(code))
