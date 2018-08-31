@@ -3,11 +3,12 @@ import test from 'ava';
 const path = require('path');
 const tempWrite = require('temp-write');
 const task = require('../lib/task');
-const join = (a, b) => path.join(a, b).replace(new RegExp('\\' + path.sep, 'g'), '/');
+
+const resolve = dir => path.join(__dirname, '../node_modules/', dir).replace(new RegExp('\\' + path.sep, 'g'), '/');
 
 const goodFile = tempWrite.sync(`
-const unique = require('${join(__dirname, '../node_modules/uniq')}');
-const flatten = require('${join(__dirname, '../node_modules/flatten')}');
+const unique = require('${resolve('uniq')}');
+const flatten = require('${resolve('flatten')}');
 module.exports = input => unique(flatten(input))`, 'imports.js');
 
 const shittyFile = tempWrite.sync(`
@@ -17,7 +18,7 @@ module.exports = input => {
 
 test('browserify can transform code', async t => {
 	t.plan(3);
-	const code = await task.runBrowserify([goodFile], {});
+	const code = await task.runBrowserify({input: goodFile});
 
 	t.true(code.length > 100);
 	t.true(code.indexOf('unique_eq(list)') > -1); // Contains a part of uniq
@@ -28,7 +29,7 @@ test('browserify can reject promise', async t => {
 	t.plan(1);
 
 	try {
-		await task.runBrowserify([shittyFile], {});
+		await task.runBrowserify({input: shittyFile});
 	} catch (err) {
 		t.truthy(err);
 	}
