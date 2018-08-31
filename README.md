@@ -30,7 +30,7 @@ $ lyo --help
     Options
       --input    -i  Entry file
       --output   -o  Output file / folder
-      --name     -n  Function name in browser
+      --name     -n  Module name in browser
       --usage    -u  Show how to use the output file 
 
     Examples
@@ -73,6 +73,8 @@ $ lyo init -i lib/main.js -n runMyModule
     }
 }
 ```
+
+Don't forget to run `npm install` after that
 
 ### 2. Add documentation
 
