@@ -12,7 +12,7 @@ const cli = meow(`
     Options
       --input    -i  Entry file
       --output   -o  Output file / folder
- 	  --name     -n  Function name in browser
+ 	  --name     -n  Module name in browser
  	  --usage    -u  Show how to use the output file 
 
     Examples
