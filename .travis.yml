@@ -5,3 +5,10 @@ node_js:
   - '6'
 
 after_success: npm run coverage
+
+deploy:
+  provider: npm
+  email: npm.bokub@mail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
