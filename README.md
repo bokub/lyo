@@ -1,11 +1,11 @@
 # Lyo
 
-> Node.js to browser. The easy way
-
 [![Npm version](https://badgen.net/npm/v/lyo)](https://npmjs.com/package/lyo)
 [![Build status](https://badgen.net/travis/bokub/lyo)](https://travis-ci.org/bokub/lyo)
 [![Build status](https://badgen.net/codecov/c/github/bokub/lyo)](https://codecov.io/gh/bokub/lyo)
 [![XO code style](https://badgen.net/badge/code%20style/XO/5ed9c7)](https://github.com/xojs/xo)
+
+> Node.js to browser. The easy way
 
 Lyo is the easiest way to publish Node.js modules as browser-compatible libraries.
 
@@ -61,23 +61,10 @@ Run `lyo init` (with options) will edit your `package.json` as follows:
 - If you provide options, they will be saved as default options (you can change/remove them later)
 
 ```sh 
+# Example with some random options
 $ lyo init -i lib/main.js -n runMyModule
 ```
-```json
-{
-    "name": "my-module",
-    "devDependencies": {
-        "lyo": "latest"
-    },
-    "scripts": {
-        "prepublishOnly": "lyo"
-    },
-    "lyo": {
-        "input": "lib/main.js",
-        "name": "runMyModule"
-    }
-}
-```
+![package.json](https://i.imgur.com/yxBGqne.png)
 
 Don't forget to run `npm install` after that
 
@@ -90,17 +77,10 @@ Don't forget to check that the version is correct, or replace it with `latest`
 $ lyo --usage
 > ...
 > Lyo finished successfully!
+> Edit and include the following in your README.md
 ```
-```html
-<!-- local usage -->
-<script src="dist/my-module.min.js"></script>
-<!-- CDN usage -->
-<script src="https://cdn.jsdelivr.net/npm/my-module@1.0.0/dist/my-module.min.js"></script>
+![HTML example](https://i.imgur.com/xryNOT5.png)
 
-<script>
-  myModule()
-</script>
-```
 
 ### 3. Commit and publish
 
