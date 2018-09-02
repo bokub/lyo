@@ -25,22 +25,21 @@ lyo
 
 ## Options
 
-```sh
+```
 $ lyo --help
 
     Usage
-      $ lyo [options]       Run Lyo
-      $ lyo init [options]  Add Lyo to your project
+      $ lyo [options]        Run Lyo
+      $ lyo init [options]   Add Lyo to your project
+      $ lyo usage [options]  Show how to use the output file 
 
     Options
       --input    -i  Entry file
       --output   -o  Output file / folder
       --name     -n  Module name in browser
-      --usage    -u  Show how to use the output file 
 
     Examples
       $ lyo
-      $ lyo --usage
       $ lyo -i main.js
       $ lyo -n runMyFunction
       $ lyo -o dist/bundle.min.js
@@ -54,13 +53,13 @@ the following steps
 
 ### 1. Add Lyo to your project
 
-Run `lyo init` (with options) will edit your `package.json` as follows:
+Run `lyo init` (with options) to edit your `package.json` as follows:
 
 - Lyo will be added to the dev dependencies
 - A pre-publish script will be created (or edited) so Lyo is triggered before every `npm publish`
 - If you provide options, they will be saved as default options (you can change/remove them later)
 
-```sh 
+```
 # Example with some random options
 $ lyo init -i lib/main.js -n runMyModule
 ```
@@ -70,14 +69,13 @@ Don't forget to run `npm install` after that
 
 ### 2. Add documentation
 
-Use Lyo with the `--usage` option to show an example code snippet. You can edit and include it in your `README.md`.
+Run `lyo usage` (with options) to show an example code snippet. You can edit and include it in your `README.md`.
 Don't forget to check that the version is correct, or replace it with `latest`
 
-```sh 
-$ lyo --usage
-> ...
-> Lyo finished successfully!
-> Edit and include the following in your README.md
+```
+$ lyo usage
+
+> Edit and include the following snippet in your README.md
 ```
 ![HTML example](https://i.imgur.com/xryNOT5.png)
 

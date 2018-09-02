@@ -1,7 +1,7 @@
 {
   "name": "lyo",
   "description": "Node.js to browser. The easy way",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
@@ -16,6 +16,7 @@
     "detect-indent": "^5.0.0",
     "edit-json-file": "^1.1.0",
     "get-stream": "^4.0.0",
+    "indent-string": "^3.2.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
     "ora": "^3.0.0",
@@ -51,7 +52,8 @@
   "repository": "bokub/lyo",
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example -u",
+    "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example",
+    "usage": "node ./bin/cli.js usage -i example/example.js -o example/example.min.js -n example",
     "test": "xo && nyc ava -v"
   },
   "xo": {
