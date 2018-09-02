@@ -1,7 +1,7 @@
 {
   "name": "lyo",
   "description": "Node.js to browser. The easy way",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
