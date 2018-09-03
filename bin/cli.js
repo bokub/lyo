@@ -35,7 +35,11 @@ switch (cli.input[0]) {
 		init(cli.flags);
 		break;
 	case 'usage':
-		usage.getUsage(cli.flags);
+		try {
+			usage.getUsage(cli.flags);
+		} catch (err) {
+			process.exit(1);
+		}
 		break;
 	case undefined:
 		lyo(cli.flags);

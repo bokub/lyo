@@ -20,6 +20,7 @@ function lyo(flags) {
 		.then(() => display.succeed(opts))
 		.catch(err => {
 			display.fail(err);
+			process.exit(1);
 		});
 }
 
