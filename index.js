@@ -2,7 +2,6 @@
 'use strict';
 
 const path = require('path');
-const chalk = require('chalk');
 const task = require('./lib/task');
 const saveCode = require('./lib/file');
 const parseOptions = require('./lib/options');
@@ -20,8 +19,7 @@ function lyo(flags) {
 		.then(code => saveCode(code, opts))
 		.then(() => display.succeed(opts))
 		.catch(err => {
-			console.error(chalk.red('\nLyo encountered an error\n'));
-			console.error(err);
+			display.fail(err);
 		});
 }
 
