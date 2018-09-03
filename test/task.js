@@ -35,6 +35,16 @@ test('browserify can reject promise', async t => {
 	}
 });
 
+test('browserify handles unknown input', async t => {
+	t.plan(1);
+
+	try {
+		await task.runBrowserify({input: 'unknown.js'});
+	} catch (err) {
+		t.truthy(err);
+	}
+});
+
 test('babel can transform code', async t => {
 	t.plan(1);
 	const input = `[1, 2, 3].map((n) => n + 1);`;

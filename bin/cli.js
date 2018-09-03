@@ -14,7 +14,7 @@ const cli = meow(`
     Options
       --input    -i  Entry file
       --output   -o  Output file / folder
- 	  --name     -n  Module name in browser
+      --name     -n  Module name in browser
 
     Examples
       $ lyo
