@@ -31,8 +31,8 @@ test.serial('getUsage works well', t => {
 	t.true(logged.indexOf(`<script>\n  lyo(foo);\n</script>`) !== -1);
 });
 
-test.serial('getUsage handles unknown input', t => {
-	usage.getUsage({input: 'unknown.js'});
+test.serial('getUsage throws on unknown input', t => {
+	t.throws(() => usage.getUsage({input: 'unknown.js'}));
 	t.true(errored.indexOf(`Lyo encountered an error`) !== -1);
 });
 

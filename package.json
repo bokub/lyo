@@ -1,7 +1,7 @@
 {
   "name": "lyo",
   "description": "Node.js to browser. The easy way",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
@@ -50,11 +50,12 @@
   "license": "MIT",
   "main": "index.js",
   "repository": "bokub/lyo",
+  "reveal": true,
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example",
-    "usage": "node ./bin/cli.js usage -i example/example.js -o example/example.min.js -n example",
-    "test": "xo && nyc ava -v"
+    "test": "xo && nyc ava -v",
+    "usage": "node ./bin/cli.js usage -i example/example.js -o example/example.min.js -n example"
   },
   "xo": {
     "rules": {

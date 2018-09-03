@@ -1,11 +1,11 @@
-# Lyo
-
-[![Npm version](https://badgen.net/npm/v/lyo)](https://npmjs.com/package/lyo)
-[![Build status](https://badgen.net/travis/bokub/lyo)](https://travis-ci.org/bokub/lyo)
-[![Build status](https://badgen.net/codecov/c/github/bokub/lyo)](https://codecov.io/gh/bokub/lyo)
-[![XO code style](https://badgen.net/badge/code%20style/XO/5ed9c7)](https://github.com/xojs/xo)
+![Lyo](https://i.imgur.com/nt5bYNJ.png)
 
 > Node.js to browser. The easy way
+
+[![Npm version](https://runkit.io/bokub/npm-version/branches/master/lyo)](https://npmjs.com/package/lyo)
+[![Build status](https://badgen.net/travis/bokub/lyo)](https://travis-ci.org/bokub/lyo)
+[![Code coverage](https://badgen.net/codecov/c/github/bokub/lyo)](https://codecov.io/gh/bokub/lyo)
+[![XO code style](https://badgen.net/badge/code%20style/XO/5ed9c7)](https://github.com/xojs/xo)
 
 Lyo is the easiest way to publish Node.js modules as browser-compatible libraries.
 

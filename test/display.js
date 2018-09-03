@@ -36,5 +36,5 @@ test.serial('succeed works well', t => {
 
 test.serial('fail works well', t => {
 	display.fail('Hello world');
-	t.is(errored, '\nLyo encountered an error\nHello world');
+	t.is(errored, '\nLyo encountered an error\nHello world\n');
 });
