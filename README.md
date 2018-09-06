@@ -1,6 +1,6 @@
 ![Lyo](https://i.imgur.com/nt5bYNJ.png)
 
-> Node.js to browser. The easy way
+> Node.js to browser - The easy way
 
 [![Npm version](https://runkit.io/bokub/npm-version/branches/master/lyo)](https://npmjs.com/package/lyo)
 [![Build status](https://badgen.net/travis/bokub/lyo)](https://travis-ci.org/bokub/lyo)
@@ -34,9 +34,9 @@ $ lyo --help
       $ lyo usage [options]  Show how to use the output file 
 
     Options
-      --input    -i  Entry file
-      --output   -o  Output file / folder
-      --name     -n  Module name in browser
+      --input   -i  Entry file
+      --output  -o  Output file / folder
+      --name    -n  Module name in browser
 
     Examples
       $ lyo

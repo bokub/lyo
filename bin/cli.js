@@ -12,9 +12,9 @@ const cli = meow(`
       $ lyo usage [options]  Show how to use the output file 
  
     Options
-      --input    -i  Entry file
-      --output   -o  Output file / folder
-      --name     -n  Module name in browser
+      --input   -i  Entry file
+      --output  -o  Output file / folder
+      --name    -n  Module name in browser
 
     Examples
       $ lyo
