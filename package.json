@@ -1,7 +1,7 @@
 {
   "name": "lyo",
-  "description": "Node.js to browser. The easy way",
-  "version": "0.4.1",
+  "description": "Node.js to browser - The easy way",
+  "version": "0.4.2",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
@@ -20,6 +20,7 @@
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
     "ora": "^3.0.0",
+    "pretty-ms": "^3.2.0",
     "uglify-js": "^3.4.8"
   },
   "devDependencies": {
