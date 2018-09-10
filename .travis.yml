@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - '10'
-  - '8'
-  - '6'
+  - 'node'
+  - 'lts/*'
+  - '7'
 
 after_success: npm run coverage
 
@@ -12,3 +12,4 @@ deploy:
   api_key: $NPM_TOKEN
   on:
     tags: true
+    node: '10'
