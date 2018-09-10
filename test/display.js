@@ -31,7 +31,7 @@ test.serial('display options works well', t => {
 
 test.serial('succeed works well', t => {
 	display.succeed();
-	t.is(logged, '\nLyo finished successfully!');
+	t.is(logged, '\nLyo finished successfully!\n');
 });
 
 test.serial('fail works well', t => {

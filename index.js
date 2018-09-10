@@ -9,19 +9,21 @@ const display = require('./lib/display');
 
 const pkg = require(path.join(process.cwd(), 'package.json'));
 
-function lyo(flags) {
+async function lyo(flags) {
 	const opts = parseOptions(flags, pkg);
 	display.options(opts);
 
-	task.runBrowserify(opts)
-		.then(code => task.runBabel(code, opts))
-		.then(code => task.runUglify(code))
-		.then(code => saveCode(code, opts))
-		.then(() => display.succeed(opts))
-		.catch(err => {
-			display.fail(err);
-			process.exit(1);
-		});
+	let code;
+	try {
+		code = await task.runBrowserify(opts);
+		code = await task.runBabel(code, opts);
+		code = await task.runUglify(code);
+		await saveCode(code, opts);
+		display.succeed(opts);
+	} catch (err) {
+		display.fail(err);
+		process.exit(1);
+	}
 }
 
 module.exports = lyo;
