@@ -7,8 +7,14 @@ const lyo = require('.');
 rimraf.sync('./dist');
 
 const opts = name => {
-	return {input: path.join('./node_modules', name), output: path.join('./dist', name + '.min.js')};
+	return {
+		input: path.join('./node_modules', name),
+		output: path.join('./dist', name + '.min.js'),
+		banner: 'Built with Lyo\nFor testing purposes'
+	};
 };
+
+/* eslint-disable import/no-unresolved */
 
 test('Lyo works on query-string', async t => {
 	await lyo(opts('query-string'));

@@ -1,7 +1,7 @@
 {
   "name": "lyo",
   "description": "Node.js to browser - The easy way",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
@@ -27,6 +27,7 @@
     "ava": "^0.25.0",
     "codecov": "^3.0.4",
     "flatten": "^1.0.2",
+    "husky": "^1.0.0-rc.13",
     "multiline": "^1.0.2",
     "nyc": "^13.0.1",
     "query-string": "^6.1.0",
@@ -36,6 +37,11 @@
     "xo": "^0.22.0"
   },
   "homepage": "https://github.com/bokub/lyo",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
   "keywords": [
     "babel",
     "browser",
@@ -57,9 +63,7 @@
   "reveal": true,
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "example": "node ./bin/cli.js -i example/example.js -o example/example.min.js -n example",
-    "test": "xo && nyc ava -v",
-    "usage": "node ./bin/cli.js usage -i example/example.js -o example/example.min.js -n example"
+    "test": "xo && nyc ava -v"
   },
   "xo": {
     "rules": {

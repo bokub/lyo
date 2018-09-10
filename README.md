@@ -1,4 +1,4 @@
-![Lyo](https://i.imgur.com/nt5bYNJ.png)
+[![Lyo](https://i.imgur.com/nt5bYNJ.png)](https://github.com/bokub/lyo/issues/1)
 
 > Node.js to browser - The easy way
 
@@ -25,6 +25,8 @@ lyo
 
 ## Options
 
+Lyo is supposed to work right away, but you can force things with some options if needed.
+
 ```
 $ lyo --help
 
@@ -37,19 +39,20 @@ $ lyo --help
       --input   -i  Entry file
       --output  -o  Output file / folder
       --name    -n  Module name in browser
+      --banner  -b  Add a banner to the top of the bundle
 
     Examples
       $ lyo
       $ lyo -i main.js
-      $ lyo -n runMyFunction
+      $ lyo -n runFunction
       $ lyo -o dist/bundle.min.js
+      $ lyo -b 'Lyo\nLicensed under MIT'
 ```
 
 
 ## Recommended workflow
 
-Once you've tried Lyo on your module and figured the good options to use, you should consider
-the following steps
+Once you've tried Lyo on your module and figured the good options to use, you should consider the following steps
 
 ### 1. Add Lyo to your project
 
@@ -57,7 +60,7 @@ Run `lyo init` (with options) to edit your `package.json` as follows:
 
 - Lyo will be added to the dev dependencies
 - A pre-publish script will be created (or edited) so Lyo is triggered before every `npm publish`
-- If you provide options, they will be saved as default options (you can change/remove them later)
+- If you provide options, **they will be saved as default options**
 
 ```
 # Example with some random options
@@ -70,7 +73,6 @@ Don't forget to run `npm install` after that
 ### 2. Add documentation
 
 Run `lyo usage` (with options) to show an example code snippet. You can edit and include it in your `README.md`.
-Don't forget to check that the version is correct, or replace it with `latest`
 
 ```
 $ lyo usage
@@ -82,10 +84,16 @@ $ lyo usage
 
 ### 3. Commit and publish
 
-Lyo will output a single file, by default in a `dist` folder. You can choose to commit it, or not. It's really up to you.
+Lyo will output a single file called a _bundle_, by default in a `dist` folder. You can choose to commit it, or not.
+It's really up to you.
 
-Run `npm publish`, Lyo will compile your package, and the output will be pushed to the npm registry with the rest of your module.
+Run `npm publish`, Lyo will compile your module, and the bundle will be pushed to the npm registry with the rest of your module.
 Congratulations, you're done! 💪
+
+### Additional tips
+
+- Don't use the bundle in a Node.js environment. The bundle is supposed to run in browsers only
+- Don't immediately blame Lyo if it fails to compile your code. The error could come from Browserify, Babel or UglifyJS
 
 
 ## FAQ
