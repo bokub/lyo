@@ -47,7 +47,7 @@ test('browserify handles unknown input', async t => {
 
 test('babel can transform code', async t => {
 	t.plan(1);
-	const input = `[1, 2, 3].map((n) => n + 1);`;
+	const input = '[1, 2, 3].map((n) => n + 1);';
 	const expected = `"use strict";
 
 [1, 2, 3].map(function (n) {
@@ -60,7 +60,7 @@ test('babel can transform code', async t => {
 
 test('babel can reject promise', async t => {
 	t.plan(1);
-	const code = `[1, 2, 3].map((n) => n `;
+	const code = '[1, 2, 3].map((n) => n ';
 
 	try {
 		await task.runBabel(code, {});
@@ -71,7 +71,7 @@ test('babel can reject promise', async t => {
 
 test('uglify can transform code', async t => {
 	t.plan(1);
-	const expected = `function greet(){console.log("hello world")}`;
+	const expected = 'function greet(){console.log("hello world")}';
 	const input = `
 function greet() {
     var hello = 'hello';
@@ -86,7 +86,7 @@ function greet() {
 
 test('uglify can reject promise', async t => {
 	t.plan(1);
-	const code = ` function greet() { `;
+	const code = ' function greet() { ';
 	try {
 		await task.runUglify(code, {});
 	} catch (err) {

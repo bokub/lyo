@@ -22,7 +22,7 @@ async function lyo(flags) {
 		display.succeed(opts);
 	} catch (err) {
 		display.fail(err);
-		process.exit(1);
+		throw (err);
 	}
 }
 
