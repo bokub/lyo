@@ -45,7 +45,7 @@ switch (cli.input[0]) {
 		}
 		break;
 	case undefined:
-		lyo(cli.flags);
+		lyo(cli.flags).catch(() => process.exit(1));
 		break;
 	default:
 		cli.showHelp(2);
