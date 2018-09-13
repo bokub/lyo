@@ -11,7 +11,8 @@ Lyo is the easiest way to publish Node.js modules as browser-compatible librarie
 
 No decision-making, no configuration needed, it just works!
 
-Lyo uses Browserify, Babel, UglifyJS, and a pinch of magic ✨ so you don't have to worry about configuring them.
+Lyo uses [Browserify][browserify], [Babel][babel], [UglifyJS][uglify], and a pinch of magic ✨ so you don't have to
+worry about configuration
 
 ## Install & Run
 
@@ -31,9 +32,10 @@ Lyo is supposed to work right away, but you can force things with some options i
 $ lyo --help
 
     Usage
-      $ lyo [options]        Run Lyo
-      $ lyo init [options]   Add Lyo to your project
-      $ lyo usage [options]  Show how to use the output file 
+      $ lyo [options]               Run Lyo
+      $ lyo init [options]          Add Lyo to your project
+      $ lyo usage [options]         Show how to use the output file
+      $ lyo get <module> [options]  Run Lyo on a module from npm
 
     Options
       --input   -i  Entry file
@@ -45,6 +47,7 @@ $ lyo --help
       $ lyo
       $ lyo -i main.js
       $ lyo -n runFunction
+      $ lyo get query-string
       $ lyo -o dist/bundle.min.js
       $ lyo -b 'Lyo\nLicensed under MIT'
 ```
@@ -62,7 +65,7 @@ Run `lyo init` (with options) to edit your `package.json` as follows:
 - A pre-publish script will be created (or edited) so Lyo is triggered before every `npm publish`
 - If you provide options, **they will be saved as default options**
 
-```
+```sh
 # Example with some random options
 $ lyo init -i lib/main.js -n runMyModule
 ```
@@ -93,26 +96,44 @@ Congratulations, you're done! 💪
 ### Additional tips
 
 - Don't use the bundle in a Node.js environment. The bundle is supposed to run in browsers only
-- Don't immediately blame Lyo if it fails to compile your code. The error could come from Browserify, Babel or UglifyJS
+- Don't immediately blame Lyo if it fails to compile your code. The error could come from [Browserify][browserify],
+ [Babel][babel] or [UglifyJS][uglify]
 
+
+## Using Lyo on someone else's module
+
+Sometimes, you stumble upon a npm module without a browser-compatible version.
+
+No worries, just run `lyo get <module>` to download and compile it right away ⚡
+
+```sh
+# Compile query-string (npmjs.com/package/query-string)
+$ lyo get query-string
+
+# Compile a specific version of Joi (npmjs.com/package/joi)
+$ lyo get joi@13.5.0 --name Joi
+```
+
+_____
 
 ## FAQ
 
 #### What if I need unsupported features?
 
-If you need unsupported features (sourcemaps, code splitting...), just don't use Lyo. Lyo is nothing more than an
-all-in-one package, with automatic configuration.
+If you need features unsupported by Lyo(sourcemaps, code splitting...), your best option is not using Lyo, which is
+nothing more than an all-in-one package, with automatic configuration.
 
-Feel free to use gulp, grunt, or any other tool that could meet your needs
+However, if you think Lyo should support this feature, feel free to create a new
+[issue](https://github.com/bokub/lyo/issues)!
 
-#### Why developing Lyo when there are thousands of better tools?
+#### Why Lyo when there are thousands of better tools doing the same thing?
 
 Lyo's philosophy is highly inspired from [XO](https://github.com/xojs/xo), a linter that works immediately, without any
 configuration. XO is just an ESLint wrapper, but it saves you the hassle of choosing ESLint rules, adding them to a
 new `.eslintrc` file, installing plugins...
 
-I use XO for almost all my projects, but I could not find any tool as simple as XO for Node.js > browser compilation, so
-I created Lyo for that purpose
+I use XO for almost all my projects, but I could not find any tool as simple as XO for Node.js > browser compilation.
+That's why I created Lyo
  
 #### What does Lyo mean?
 
@@ -123,3 +144,7 @@ into a dry and compact form
 ## License
 
 MIT © [Boris K](https://github.com/bokub)
+
+[browserify]: https://github.com/browserify/browserify
+[babel]: https://github.com/babel/babel
+[uglify]: https://github.com/mishoo/UglifyJS2
