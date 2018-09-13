@@ -1,14 +1,14 @@
 {
   "name": "lyo",
   "description": "Node.js to browser - The easy way",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "author": "Boris K",
   "bin": {
     "lyo": "bin/cli.js"
   },
   "bugs": "https://github.com/bokub/lyo/issues",
   "dependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.0.1",
     "@babel/preset-env": "^7.0.0",
     "browserify": "^16.2.2",
     "camelcase": "^5.0.0",
@@ -24,13 +24,13 @@
     "pify": "^4.0.0",
     "pretty-ms": "^3.2.0",
     "temp-dir": "^1.0.0",
-    "uglify-js": "^3.4.8"
+    "uglify-js": "^3.4.9"
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "codecov": "^3.0.4",
+    "codecov": "^3.1.0",
     "flatten": "^1.0.2",
-    "husky": "^1.0.0-rc.13",
+    "husky": "^1.0.0-rc.14",
     "import-fresh": "^2.0.0",
     "nyc": "^13.0.1",
     "query-string": "^6.1.0",
