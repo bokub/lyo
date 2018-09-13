@@ -4,12 +4,14 @@ const meow = require('meow');
 const lyo = require('..');
 const init = require('../lib/init');
 const usage = require('../lib/usage');
+const get = require('../lib/get');
 
 const cli = meow(`
     Usage
-      $ lyo [options]        Run Lyo
-      $ lyo init [options]   Add Lyo to your project
-      $ lyo usage [options]  Show how to use the output file 
+      $ lyo [options]               Run Lyo
+      $ lyo init [options]          Add Lyo to your project
+      $ lyo usage [options]         Show how to use the output file
+      $ lyo get <module> [options]  Run Lyo on a module from npm
 
     Options
       --input   -i  Entry file
@@ -21,6 +23,7 @@ const cli = meow(`
       $ lyo
       $ lyo -i main.js
       $ lyo -n runFunction
+      $ lyo get query-string
       $ lyo -o dist/bundle.min.js
       $ lyo -b 'Lyo\\nLicensed under MIT'
 `, {
@@ -43,6 +46,12 @@ switch (cli.input[0]) {
 		} catch (err) {
 			process.exit(1);
 		}
+		break;
+	case 'get':
+		if (!cli.input[1]) {
+			cli.showHelp(2);
+		}
+		get(cli.input[1], cli.flags).catch(() => process.exit(1));
 		break;
 	case undefined:
 		lyo(cli.flags).catch(() => process.exit(1));

@@ -19,8 +19,11 @@
     "indent-string": "^3.2.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
+    "npmi": "^4.0.0",
     "ora": "^3.0.0",
+    "pify": "^4.0.0",
     "pretty-ms": "^3.2.0",
+    "temp-dir": "^1.0.0",
     "uglify-js": "^3.4.8"
   },
   "devDependencies": {
@@ -28,7 +31,6 @@
     "codecov": "^3.0.4",
     "flatten": "^1.0.2",
     "husky": "^1.0.0-rc.13",
-    "multiline": "^1.0.2",
     "nyc": "^13.0.1",
     "query-string": "^6.1.0",
     "rimraf": "^2.6.2",
