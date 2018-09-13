@@ -1,14 +1,13 @@
 #! /usr/bin/env node
 'use strict';
 
-const path = require('path');
 const task = require('./lib/task');
 const saveCode = require('./lib/save');
 const parseOptions = require('./lib/options');
 const display = require('./lib/display');
 
 async function lyo(flags, pkg) {
-	const opts = parseOptions(flags, pkg || require(path.join(process.cwd(), 'package.json')));
+	const opts = parseOptions(flags, pkg || require('./lib/pkg'));
 	display.options(opts);
 
 	let code;
