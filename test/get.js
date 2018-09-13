@@ -7,7 +7,7 @@ rimraf.sync('./dist/get');
 
 /* eslint-disable import/no-unresolved */
 
-test('lyo can download and compile "multiline"', async t => {
+test('can download and compile "multiline"', async t => {
 	await get('multiline', {output: 'dist/get'});
 	const multiline = require('../dist/get/multiline.min.js');
 	const result = multiline.stripIndent(() => {/*
@@ -18,7 +18,19 @@ world!
 	t.is(result, expected);
 });
 
-test('lyo cannot download unknown modules"', async t => {
+test('can target a specific version', async t => {
+	await get('query-string@5.0.0', {output: 'dist/get/query-string-5.min.js'});
+	let queryString = require('../dist/get/query-string-5.min.js');
+	t.throws(() => {
+		queryString.parseUrl('https://foo.bar?foo=bar');
+	});
+
+	await get('query-string', {output: 'dist/get/query-string-latest.min.js'});
+	queryString = require('../dist/get/query-string-latest.min.js');
+	t.deepEqual(queryString.parseUrl('https://foo.bar?foo=bar'), {url: 'https://foo.bar', query: {foo: 'bar'}});
+});
+
+test('cannot install unknown modules"', async t => {
 	try {
 		await get('neiqsneialsothfkdsqiofqdsjklfdsqvfiouaramq', {output: 'dist/get'});
 		t.fail();
