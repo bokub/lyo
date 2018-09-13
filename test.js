@@ -24,17 +24,6 @@ test('Lyo works on "query-string"', async t => {
 	t.is(queryString.stringify({foo: 'unicorn', ilike: 'pizza'}), 'foo=unicorn&ilike=pizza');
 });
 
-test('Lyo works on "multiline"', async t => {
-	await lyo(opts('multiline'));
-	const multiline = require('./dist/modules/multiline.min.js');
-	const result = multiline.stripIndent(() => {/*
-Hello
-world!
-*/});
-	const expected = 'Hello\nworld!';
-	t.is(result, expected);
-});
-
 test('Lyo doesn\'t work on "babel"', async t => {
 	try {
 		await lyo(opts('@babel/core'));

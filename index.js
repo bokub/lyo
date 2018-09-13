@@ -3,14 +3,12 @@
 
 const path = require('path');
 const task = require('./lib/task');
-const saveCode = require('./lib/file');
+const saveCode = require('./lib/save');
 const parseOptions = require('./lib/options');
 const display = require('./lib/display');
 
-const pkg = require(path.join(process.cwd(), 'package.json'));
-
-async function lyo(flags) {
-	const opts = parseOptions(flags, pkg);
+async function lyo(flags, pkg) {
+	const opts = parseOptions(flags, pkg || require(path.join(process.cwd(), 'package.json')));
 	display.options(opts);
 
 	let code;
