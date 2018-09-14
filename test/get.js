@@ -18,7 +18,7 @@ world!
 	t.is(result, expected);
 });
 
-test('can target a specific version', async t => {
+test.serial('can target a specific version', async t => {
 	await get('query-string@5.0.0', {output: 'dist/get/query-string-5.min.js'});
 	let queryString = require('../dist/get/query-string-5.min.js');
 	t.throws(() => {
@@ -30,7 +30,7 @@ test('can target a specific version', async t => {
 	t.deepEqual(queryString.parseUrl('https://foo.bar?foo=bar'), {url: 'https://foo.bar', query: {foo: 'bar'}});
 });
 
-test('cannot install unknown modules"', async t => {
+test.serial('cannot install unknown modules"', async t => {
 	try {
 		await get('neiqsneialsothfkdsqiofqdsjklfdsqvfiouaramq', {output: 'dist/get'});
 		t.fail();
