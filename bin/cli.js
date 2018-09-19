@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+
 const meow = require('meow');
 const lyo = require('..');
 const init = require('../lib/init');
@@ -38,7 +39,11 @@ const cli = meow(`
 
 switch (cli.input[0]) {
 	case 'init':
-		init(cli.flags);
+		try {
+			init(cli.flags);
+		} catch (err) {
+			process.exit(1);
+		}
 		break;
 	case 'usage':
 		try {
