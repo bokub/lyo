@@ -7,7 +7,7 @@
 [![Code coverage](https://badgen.net/codecov/c/github/bokub/lyo)](https://codecov.io/gh/bokub/lyo)
 [![XO code style](https://badgen.net/badge/code%20style/XO/5ed9c7)](https://github.com/xojs/xo)
 
-Lyo is the easiest way to publish Node.js modules as browser-compatible libraries.
+Lyo is the easiest way to transform Node.js modules into browser-compatible libraries.
 
 No decision-making, no configuration needed, it just works!
 
@@ -20,8 +20,20 @@ worry about configuration
 # Install globally
 npm i -g lyo
 
-# Run
+# Run (on your own module)
 lyo
+
+# Run (on any npm module)
+lyo get query-string
+```
+
+Lyo will create a single `.min.js` file that you can import in a `<script>` tag
+
+```html
+<script src="my-module.min.js"></script>
+<script>
+  myModule('foo');
+</script>
 ```
 
 ## Options
@@ -55,7 +67,7 @@ $ lyo --help
 
 ## Recommended workflow
 
-Once you've tried Lyo on your module and figured the good options to use, you should consider the following steps
+Once you've tried Lyo on your module and figured the best options to use, you should consider the following steps
 
 ### 1. Add Lyo to your project
 
@@ -120,7 +132,7 @@ _____
 
 #### What if I need unsupported features?
 
-If you need features unsupported by Lyo(sourcemaps, code splitting...), your best option is not using Lyo, which is
+If you need features unsupported by Lyo (sourcemaps, code splitting...), your best option is not using Lyo, which is
 nothing more than an all-in-one package, with automatic configuration.
 
 However, if you think Lyo should support this feature, feel free to create a new
