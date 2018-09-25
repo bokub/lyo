@@ -52,3 +52,17 @@ test('default options are correct', t => {
 		output: 'dist/my-module.min.js'
 	});
 });
+
+test('remote packages have different options', t => {
+	const pkg = {name: 'rem'};
+	t.is(parseOptions({remote: 'rem', inputDir: '/tmp'}, pkg).output, 'rem.min.js');
+
+	pkg.name = '@antv/f2';
+	t.deepEqual(parseOptions({remote: '@antv/f2', inputDir: '/tmp'}, pkg), {
+		input: '/tmp/index.js',
+		inputDir: '/tmp',
+		name: 'f2',
+		output: 'f2.min.js',
+		remote: '@antv/f2'
+	});
+});

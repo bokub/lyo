@@ -24,7 +24,7 @@ npm i -g lyo
 lyo
 
 # Run (on any npm module)
-lyo get query-string
+lyo get <module>
 ```
 
 Lyo will create a single `.min.js` file that you can import in a `<script>` tag
