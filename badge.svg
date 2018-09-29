@@ -1,4 +1,4 @@
-
+<!-- Generated with gradient-badge - http://git.io/gradientbadge -->
 <svg width="119.7" height="20" viewBox="0 0 1197 200" xmlns="http://www.w3.org/2000/svg">
   <linearGradient id="a" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
@@ -16,9 +16,9 @@
     <text x="655" y="148" textLength="497" fill="#000" opacity="0.25">Available</text>
     <text x="645" y="138" textLength="497">Available</text>
   </g>
-  
+
   <linearGradient id="x" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" style="stop-color:#ffdd00" />
-    <stop offset="100%" style="stop-color:#ff40c3" />
+    <stop offset="0%" style="stop-color:#fbe200" />
+    <stop offset="100%" style="stop-color:#f767f9" />
   </linearGradient>
 </svg>
