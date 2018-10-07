@@ -46,7 +46,7 @@ test('browserify handles unknown input', async t => {
 	}
 });
 
-test('check babelconfig output', async t => {
+test.serial('check babelconfig output', async t => {
 	t.plan(1);
 	fs.writeFileSync('test/.babelrc', `{
 	"presets": [
@@ -98,13 +98,8 @@ var _x$y$a$b = {
 	t.is(code, expected);
 });
 
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-test('check babelconfig output without preset', async t => {
+test.serial('check babelconfig output without preset', async t => {
 	t.plan(1);
-	await sleep(2000);
 	fs.writeFileSync('test/.babelrc', `{
 	"plugins": ["@babel/plugin-proposal-object-rest-spread"]
 }`);
