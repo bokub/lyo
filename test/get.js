@@ -14,8 +14,7 @@ test('can download and compile "multiline"', async t => {
 Hello
 world!
 */});
-	const expected = 'Hello\nworld!';
-	t.is(result, expected);
+	t.true(result === 'Hello\nworld!' || result === 'Hello\r\nworld!');
 });
 
 test.serial('can target a specific version', async t => {
