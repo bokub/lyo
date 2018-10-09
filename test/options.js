@@ -68,20 +68,12 @@ test('remote packages have different options', t => {
 	});
 });
 
-test('check .babelrc exists', t => {
-	mock({
-		'.babelrc': mock.file({
-			content: `{
-				"presets": [
-					"@babel/preset-env"
-				]
-			}`
-		})
-	});
+test('.babelrc is detected when present', t => {
+	t.is(parseOptions({}, {}).babelConfig, undefined);
+
+	const babelrc = mock.file({content: '{"presets": ["@babel/preset-env" ]}'});
+	mock({'.babelrc': babelrc});
+
 	t.is(parseOptions({}, {}).babelConfig, '.babelrc');
 	mock.restore();
-});
-
-test('check .babelrc does not exists', t => {
-	t.is(parseOptions({}, {}).babelConfig, undefined);
 });
