@@ -1,6 +1,7 @@
 import test from 'ava';
 
 const path = require('path');
+const fs = require('fs');
 const tempWrite = require('temp-write');
 const task = require('../lib/task');
 
@@ -43,6 +44,54 @@ test('browserify handles unknown input', async t => {
 	} catch (err) {
 		t.truthy(err);
 	}
+});
+
+test('check output without external babelrc', async t => {
+	t.plan(1);
+	const input = 'let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };';
+	const expected = `"use strict";
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+var _x$y$a$b = {
+  x: 1,
+  y: 2,
+  a: 3,
+  b: 4
+},
+    x = _x$y$a$b.x,
+    y = _x$y$a$b.y,
+    z = _objectWithoutProperties(_x$y$a$b, ["x", "y"]);`;
+
+	const code = await task.runBabel(input, {});
+	t.is(code, expected);
+});
+
+test('check babelconfig output without preset', async t => {
+	t.plan(1);
+	fs.writeFileSync('test/.babelrc', `{
+		"plugins": ["@babel/plugin-proposal-object-rest-spread"]
+	}`);
+	const input = 'let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };';
+	const expected = `function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+let _x$y$a$b = {
+  x: 1,
+  y: 2,
+  a: 3,
+  b: 4
+},
+    {
+  x,
+  y
+} = _x$y$a$b,
+    z = _objectWithoutProperties(_x$y$a$b, ["x", "y"]);`;
+
+	const code = await task.runBabel(input, {babelConfig: './test/.babelrc'});
+	t.is(code, expected);
+	fs.unlinkSync('./test/.babelrc');
 });
 
 test('babel can transform code', async t => {

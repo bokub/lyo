@@ -1,4 +1,5 @@
 import test from 'ava';
+import mock from 'mock-fs';
 
 const parseOptions = require('../lib/options');
 
@@ -65,4 +66,22 @@ test('remote packages have different options', t => {
 		output: 'f2.min.js',
 		remote: '@antv/f2'
 	});
+});
+
+test('check .babelrc exists', t => {
+	mock({
+		'.babelrc': mock.file({
+			content: `{
+				"presets": [
+					"@babel/preset-env"
+				]
+			}`
+		})
+	});
+	t.is(parseOptions({}, {}).babelConfig, '.babelrc');
+	mock.restore();
+});
+
+test('check .babelrc does not exists', t => {
+	t.is(parseOptions({}, {}).babelConfig, undefined);
 });
