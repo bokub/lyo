@@ -74,6 +74,6 @@ test('.babelrc is detected when present', t => {
 	const babelrc = mock.file({content: '{"presets": ["@babel/preset-env" ]}'});
 	mock({'.babelrc': babelrc});
 
-	t.is(parseOptions({}, {}).babelConfig, '.babelrc');
+	t.is(parseOptions({}, {}).babelConfig, process.cwd() + '/.babelrc');
 	mock.restore();
 });

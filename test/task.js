@@ -48,16 +48,21 @@ test('browserify handles unknown input', async t => {
 
 test('babelrc file changes output', async t => {
 	fs.writeFileSync('test/.babelrc', `{
-		"plugins": ["@babel/plugin-proposal-object-rest-spread"]
+	  "presets": [
+		["@babel/preset-env"]
+	  ],
+	  "plugins": ["transform-remove-console"]
 	}`);
 
-	const input = 'let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };';
-
+	const input = 'let x = "hello"; console.log(x);';
 	const originalOutput = await task.runBabel(input, {});
-	const babelrcOutput = await task.runBabel(input, {babelConfig: './test/.babelrc'});
+	const babelrcOutput = await task.runBabel(input, {
+		babelConfig: path.resolve('test/.babelrc'),
+		input: path.resolve('test/task.js')
+	});
 
-	// Output should be different
-	t.not(babelrcOutput, originalOutput);
+	t.is(originalOutput, '"use strict";\n\nvar x = "hello";\nconsole.log(x);');
+	t.is(babelrcOutput, '"use strict";\n\nvar x = "hello";');
 
 	fs.unlinkSync('./test/.babelrc');
 });

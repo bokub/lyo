@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "codecov": "^3.1.0",
     "flatten": "^1.0.2",
     "husky": "^1.0.0-rc.14",
