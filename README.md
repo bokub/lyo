@@ -1,4 +1,4 @@
-[![Lyo](https://i.imgur.com/nt5bYNJ.png)](https://github.com/bokub/lyo/issues/1)
+![Lyo](https://user-images.githubusercontent.com/17952318/44954822-2055cc80-aea9-11e8-9ebd-b10619f80171.png)
 
 > Node.js to browser - The easy way
 
@@ -65,7 +65,15 @@ $ lyo --help
 ```
 
 
-## Recommended workflow
+## Tips
+
+- Add a `.babelrc` file at the root of your project to [configure][babel-config] the Babel compilation step
+- The bundle is supposed to run in browsers. A bundle used in a Node.js program will probably be slower than the original module
+- Don't blame Lyo if it fails to compile your code. The error could come from [Browserify][browserify], [Babel][babel] or [UglifyJS][uglify]
+- If you like Lyo, you will love [lyo.now.sh](https://lyo.now.sh/), an automated bot 🤖 running Lyo on npm modules of your choice
+
+
+## Using Lyo on your own module
 
 Once you've tried Lyo on your module and figured the best options to use, you should consider the following steps
 
@@ -104,12 +112,6 @@ It's really up to you.
 
 Run `npm publish`, Lyo will compile your module, and the bundle will be pushed to the npm registry with the rest of your module.
 Congratulations, you're done! 💪
-
-### Additional tips
-
-- Don't use the bundle in a Node.js environment. The bundle is supposed to run in browsers only
-- Don't immediately blame Lyo if it fails to compile your code. The error could come from [Browserify][browserify],
- [Babel][babel] or [UglifyJS][uglify]
 
 
 ## Using Lyo on someone else's module
@@ -159,4 +161,5 @@ MIT © [Boris K](https://github.com/bokub)
 
 [browserify]: https://github.com/browserify/browserify
 [babel]: https://github.com/babel/babel
+[babel-config]: https://babeljs.io/docs/en/configuration
 [uglify]: https://github.com/mishoo/UglifyJS2
